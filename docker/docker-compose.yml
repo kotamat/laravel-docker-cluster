@@ -28,3 +28,7 @@ services:
     build: ./gulp
     volumes_from:
       - data
+  npm:
+    build: ./npm
+    volumes_from:
+      - data

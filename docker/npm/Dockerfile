@@ -17,5 +17,5 @@ RUN mkdir -p /data/www
 VOLUME ["/data"]
 WORKDIR /data/www
 
-ENTRYPOINT ["gulp"]
+ENTRYPOINT ["npm"]
 CMD ["-h"]
