@@ -1,13 +1,16 @@
 version: "2"
 services:
-  db:
-    image: mariadb
-    environment:
-      MYSQL_ROOT_PASSWORD: pass
   data:
     build: ./data
     volumes:
       - ../:/data
+      - /var/lib/mysql
+  db:
+    image: mariadb
+    volumes_from:
+        - data
+    environment:
+      MYSQL_ROOT_PASSWORD: pass
   fpm:
     build: ./fpm
     volumes_from:
@@ -19,7 +22,7 @@ services:
     links:
       - fpm:fpm
     ports:
-      - "81:80"
+      - "80:80"
   composer:
     build: ./composer
     volumes_from:
