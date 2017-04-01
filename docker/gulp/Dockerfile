@@ -13,9 +13,9 @@ RUN n stable
 RUN apt-get purge -y nodejs npm
 RUN npm i -g gulp-cli
 
-RUN mkdir -p /data/www
+RUN mkdir -p /data
 VOLUME ["/data"]
-WORKDIR /data/www
+WORKDIR /data
 
 ENTRYPOINT ["gulp"]
 CMD ["-h"]

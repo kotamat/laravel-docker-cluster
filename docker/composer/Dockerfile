@@ -11,9 +11,9 @@ RUN mv composer.phar /usr/local/bin/composer
 RUN composer self-update
 RUN composer global require hirak/prestissimo
 
-RUN mkdir -p /data/www
+RUN mkdir -p /data
 VOLUME ["/data"]
-WORKDIR /data/www
+WORKDIR /data
 
 ENTRYPOINT ["composer"]
 CMD ["--help"]

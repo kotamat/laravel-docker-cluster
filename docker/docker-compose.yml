@@ -3,7 +3,8 @@ services:
   data:
     build: ./data
     volumes:
-      - ../:/data
+      - ../../:/data
+      - ../logs:/logs
       - /var/lib/mysql
   db:
     image: mariadb
