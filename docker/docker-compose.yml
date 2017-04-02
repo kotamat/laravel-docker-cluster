@@ -10,7 +10,8 @@ services:
     volumes_from:
         - data
     environment:
-      MYSQL_ROOT_PASSWORD: pass
+      - MYSQL_ROOT_PASSWORD=pass
+      - MYSQL_DATABASE=db
   fpm:
     build: ./fpm
     volumes_from:
@@ -24,9 +25,19 @@ services:
     ports:
       - "80:80"
   composer:
-    build: ./composer
+    build: ./phpcli
+    entrypoint: composer
+    links:
+      - db:db
     volumes_from:
       - data
+  php:
+    build: ./phpcli
+    links:
+      - db:db
+    volumes_from:
+      - data
+    entrypoint: php
   gulp:
     build: ./gulp
     volumes_from:
